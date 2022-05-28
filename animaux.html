@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="stylesheet.css">
+<script language="javascript">
+    imgPath = new Array;
+    SiClickGoTo = new Array;
+    version = navigator.appVersion.substring(0,1);
+    if (version >= 3)
+    {
+        i0 = new Image;
+        i0.src = 'oursPo.jpg';
+        SiClickGoTo[0] = "Lien0";
+        imgPath[0] = i0.src;
+        i1 = new Image;
+        i1.src = 'faucon.jpg';
+        SiClickGoTo[1] = "Lien1";
+        imgPath[1] = i1.src;
+        i2 = new Image;
+        i2.src = 'tigre.jpg';
+        SiClickGoTo[2] = "Lien2";
+        imgPath[2] = i2.src;
+    }
+    a = 0;
+    function StartAnim()
+    {
+        if (version >= 3)
+        {
+            document.write('<a href="#" onclick="ImgDest();return(false)"><img src="oursPo.jpg" width="250" height="250" border="0" alt="Menu" name="defil" /></a>');
+            defilimg()
+        }
+        else
+        {
+            document.write('<a href="Lien0"><img src="oursPo.jpg" width="250" height="250" border="0" /></a>')
+        }
+    }
+    function ImgDest()
+    {
+        document.location.href = SiClickGoTo[a-1];
+    }
+    function defilimg()
+    {
+        if (a == 3)
+        {
+            a = 0;
+        }
+        if (version >= 3)
+        {
+            document.defil.src = imgPath[a];
+            tempo3 = setTimeout("defilimg()",5000);
+            a++;
+        }
+    }
+</script>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Zoo de Cergy | Animaux</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="index.html">Accueil</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="animaux.html">Animaux <span class="sr-only"></span></a>
+                </li>
+                <li>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="ticket.html">Ticket</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="Inscription.php">Connexion</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</header>
+<main>Animaux
+<h2>Voici quelques uns de nos animaux</h2>
+    <script language="javascript">
+        StartAnim();
+    </script>
+</main>
+<footer></footer>
+</body>
+</html>
