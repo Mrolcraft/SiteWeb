@@ -20,6 +20,7 @@ if(sizeof($_POST) == 3) {
             } else {
                 if(password_verify($password, $result['password'])) {
                     $_SESSION['pseudo'] = $pseudo;
+                    $_SESSION['role'] = $result['role'];
                     echo "Connexion réussie !";
                 } else {
                     echo "Le mot de passe est faux.";
@@ -58,17 +59,16 @@ if(sizeof($_POST) == 3) {
                     </li>
                     <li>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="ticket.html">Ticket</a>
+                            <a class="dropdown-item" href="ticket.php">Ticket</a>
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="navbar-brand" href="Inscription.php">Connexion</a>
+                        <a class="navbar-brand" href="Connexion.php">Connexion</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="navbar-brand" href="Inscription.php">Inscription</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
             </div>
         </nav>
     </header>
@@ -89,5 +89,14 @@ if(sizeof($_POST) == 3) {
         </form>
         <?php } else { ?>
         <p><?= 'Bienvenue ' .$_SESSION['pseudo']?></p><?php }?>
+    <?php
+    if(isset($_SESSION['pseudo'])) {
+        ?>
+        <form action="deconnexion.php">
+            <input type="submit" id="submit" name="submit" value="Se déconnecter">
+        </form>
+        <?php
+    }
+    ?>
     </body>
 </html>
